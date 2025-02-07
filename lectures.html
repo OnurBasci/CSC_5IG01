@@ -15,17 +15,105 @@
     <h2>Lecture Homework 1: VR Fails</h2>
     
     <h3>Scenario 1: Collisions with Furniture or Walls</h3>
-    <p>One common problem with VR headsets is that users can easily lose awareness of their surroundings, leading them to accidentally walk into walls, tables, or other furniture. This could result in injuries or property damage.</p>
-    <p>To address this issue, I would enhance the existing "Guardian Systems" found in many VR headsets. These systems allow users to define a safe play area, and when they approach the boundary, a virtual grid appears.</p>
+    <p>One common problem with VR headsets is that users can easily lose awareness of their surroundings, leading them to accidentally walk 
+        into walls, tables, or other furniture. This could result in injuries or property damage.</p>
+    <p>To address this issue, I would enhance the existing "Guardian Systems" found in many VR headsets. These systems allow users 
+        to define a safe play area, and when they approach the boundary, a virtual grid appears.</p>
     
     <h3>Scenario 2: Collisions with Other People</h3>
-    <p>Another issue arises when a bystander unknowingly enters the VR user’s play area, creating a risk of collisions that could harm both parties. The VR user, fully focused on the virtual environment, is often completely unaware of the person entering their space.</p>
-    <p>To overcome this, I would suggest implementing real-time bystander detection using the headset's external cameras or depth sensors. If someone enters the designated play area, the system could display a translucent silhouette of the person within the VR environment, making the user immediately aware of their presence.</p>
+    <p>Another issue arises when a bystander unknowingly enters the VR user’s play area, creating a risk of collisions that could harm 
+        both parties. The VR user, fully focused on the virtual environment, is often completely unaware of the person entering their space.</p>
+    <p>To overcome this, I would suggest implementing real-time bystander detection using the headset's external cameras or depth sensors. 
+        If someone enters the designated play area, the system could display a translucent silhouette of the person within the VR environment, 
+        making the user immediately aware of their presence.</p>
     
     <h2>Lecture Homework 2: CAVE System</h2>
-    <p>The primary difference between the CAVE system and head-mounted displays (HMDs) lies in how they deliver the virtual experience. The CAVE system uses multiple large projection screens to create an immersive environment that users can enter, allowing for collaborative experiences where several individuals can share the same virtual space without wearing cumbersome gear. In contrast, HMDs are personal devices worn on the head, offering a highly immersive and portable VR experience tailored to the individual. CAVE systems excel in providing a natural sense of spatial awareness, as users can freely move within a physical space, and they avoid the discomfort or isolation often associated with wearing HMDs. However, they are expensive to set up, require significant physical space, and lack portability. On the other hand, HMDs are more accessible and affordable, making them ideal for individual use or gaming, but they can feel isolating, limit collaborative interactions, and sometimes cause motion sickness due to their reliance on screens close to the eyes. Each system has its strengths, with CAVEs better suited for collaborative and professional environments and HMDs more practical for personal and entertainment applications.</p>
+    <p>The primary difference between the CAVE system and head-mounted displays (HMDs) lies in how they deliver the virtual experience. 
+        The CAVE system uses multiple large projection screens to create an immersive environment that users can enter, allowing for 
+        collaborative experiences where several individuals can share the same virtual space without wearing cumbersome gear. 
+        In contrast, HMDs are personal devices worn on the head, offering a highly immersive and portable VR experience tailored 
+        to the individual. CAVE systems excel in providing a natural sense of spatial awareness, as users can freely move within a 
+        physical space, and they avoid the discomfort or isolation often associated with wearing HMDs. However, they are expensive 
+        to set up, require significant physical space, and lack portability. On the other hand, HMDs are more accessible and affordable, 
+        making them ideal for individual use or gaming, but they can feel isolating, limit collaborative interactions, and sometimes 
+        cause motion sickness due to their reliance on screens close to the eyes. Each system has its strengths, with CAVEs better 
+        suited for collaborative and professional environments and HMDs more practical for personal and entertainment applications.</p>
+
+    <h2>Lecture Homework 3: VR Selection Techniques</h2>
+    
+    <div class="technique">
+      <h2>Head Gaze Selection</h2>
+      <p>
+        Head Gaze Selection is a VR interaction method where the user selects objects by directing their head and aligning a central reticle (or cursor) with the target. The reticle typically resides in the center of the user's view. Selection is confirmed by either maintaining focus on the object for a specified dwell time or using a secondary input like a button press. This technique leverages the user's head orientation, tracked by the VR headset, making it suitable for hands-free interaction or when precise hand tracking isn't feasible.
+      </p>
+      <p>
+        <a href="https://www.youtube.com/watch?v=7mn1CZ_cTY0" target="_blank">Watch the Head Gaze Selection video</a>
+      </p>
+      <h3>Classification:</h3>
+      <ul>
+        <li><strong>Reach</strong> – The user can select any visible object in the VR environment, regardless of distance, as long as it lies within the field of view and aligns with the reticle. This gives the technique an infinite reach in theory.</li>
+        <li><strong>Cardinality</strong> – Head Gaze Selection focuses on selecting one object at a time, as the reticle can only align with one target.</li>
+        <li><strong>Progressive Refinement</strong> – Selection is binary, involving a simple "target-or-not" decision rather than gradual adjustments or refinements. Objects are either selected or ignored, without intermediate steps.</li>
+      </ul>
+    </div>
+    
+    <div class="technique">
+      <h2>Shadow Cone Selection</h2>
+      <p>
+        Shadow Cone Selection is a VR group selection technique that dynamically refines the selection set based on the user’s movement and maintains objects within a cone-shaped volume. Upon activation, the system initializes the selection set with all objects inside a cone originating from the user’s hand and defined by a target angle. As the user moves their hand, objects exiting the cone are removed from the selection set, while no new objects are added. When the user releases the selection button, only the objects that remained consistently within the cone are selected. This process is akin to shining a flashlight and selecting only the objects that remain illuminated throughout the movement.
+      </p>
+      <h3>Classification:</h3>
+      <ul>
+        <li><strong>Reach</strong> – Finite: The selection is limited to objects within the cone's fixed volume, defined by the target angle and distance, constraining its range to the local vicinity of the user’s hand or controller.</li>
+        <li><strong>Cardinality</strong> – Multiple: Shadow Cone Selection inherently supports selecting multiple objects, as all objects that remain inside the cone during the gesture are included in the final selection set.</li>
+        <li><strong>Progressive Refinement</strong> – The technique refines the selection set dynamically and continuously as the user moves their hand, removing objects no longer within the cone and ensuring only persistent objects are selected.</li>
+        <li><strong>Reference</strong> – 3D Selection Strategies for Head Tracked and Non-Head Tracked Operation of Spatially Immersive Displays</li>
+      </ul>
+    </div>
+    
+    <div class="technique">
+      <h2>Pinpointing Selection</h2>
+      <p>
+        Pinpointing is a multimodal selection technique designed to improve precision and efficiency in AR environments by combining head-based and eye-based inputs. The process begins with the user performing coarse positioning of a cursor or reticle using deliberate head movements, which are highly accurate for broad targeting. Eye gaze is then used for fine-grained adjustments, leveraging its speed and ability to naturally refine focus. This two-step approach overcomes limitations such as drift and calibration errors common with standalone eye-tracking systems.
+      </p>
+      <p>
+        <a href="https://www.youtube.com/watch?v=q9cbAfxKAPI&t=29s" target="_blank">Watch the Pinpointing Selection video</a>
+      </p>
+      <h3>Classification:</h3>
+      <ul>
+        <li><strong>Reach</strong> – The technique allows users to target objects anywhere within the AR display's visible field, leveraging the natural reach of head and eye movements.</li>
+        <li><strong>Cardinality</strong> – Single: Pinpointing is focused on selecting one specific target at a time, enhancing precision in single-object selection scenarios.</li>
+        <li><strong>Progressive Refinement</strong> – Continuous: The combined use of head movement for coarse positioning and eye gaze for fine-tuning ensures a continuous and iterative refinement process, leading to precise target acquisition.</li>
+        <li><strong>Reference</strong> – Pinpointing: Precise Head- and Eye-Based Target Selection for Augmented Reality</li>
+      </ul>
+    </div>
+    
+    <h2>Lecture Homework 4: VR Navigation Pitch</h2>
+
+    <p>
+        This week I prepared a presentation about my locomotion technique called Jetpack locomotion.
+    </p>
+
+    <a href="HCI_Locomotion.pdf" target="_blank">Jetpack locomotion pdf</a>
+
+    <h2>Lecture Homework 5: Selecting Objects in a supermarket</h2>
+
+    <p>
+        This week I and Jean-Loup presented 2 selection techniques: selection by filtering and selection by Portls,
+        after the presentation, we discussed with the professor and decided to implement portal selection. 
+    </p>
+
+    <a href="selection_techniques.pdf" target="_blank">Selection Techniques pdf</a>
+
+    <h2>Lecture Homework 6: Final Presentation</h2>
+
+    <p>
+        This week I and Jean-Loup presented our project. The details are explained in Jean-Loup's blog.
+        <a href="https://perso.telecom-paristech.fr/jlarette-22/IGD301" target="_blank">Jean-Loup blog</a>
+    </p>
+
   </section>
-  
+
   <nav>
     <ul>
       <li><a href="index.html">Back to Main Page</a></li>
